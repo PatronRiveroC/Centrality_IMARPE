@@ -429,6 +429,7 @@ head(gbif)</code></pre>
 vars &lt;- list.files(pattern = &quot;.tif&quot;)
 vars &lt;- rast(vars)
 plot(vars)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
 </div>
 <div id="formato" class="section level1">
 <h1>Formato</h1>
@@ -450,6 +451,7 @@ ecor_M &lt;- crop(vars, ecor, mask = TRUE)
 plot(ecor_M[[1]])
 plot(ecor, add = TRUE, border = &quot;blue&quot;, lwd = 2)
 points(occ1, pch = 3)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 </div>
 <div id="construir-elipsoides" class="section level2">
 <h2>Construir elipsoides</h2>
@@ -471,6 +473,7 @@ ellipsoidMod &lt;- ellipsoidfit(ecor_M[[1:3]], covar_centroid$centroid, covar_ce
 <h1>Visualizar el modelo</h1>
 <pre class="r"><code>plot(ellipsoidMod$suitRaster)
 points(data[, c(1:2)])</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
 </div>
 <div id="visualizar-el-ellipsoide" class="section level1">
 <h1>Visualizar el ellipsoide</h1>
@@ -544,6 +547,7 @@ ggplot(cor_data, aes(DNC, abun)) +
   geom_smooth(color = &quot;red&quot;, method = &quot;lm&quot;, formula = formula, se = TRUE) +
   stat_regline_equation(aes(label = paste(after_stat(eq.label), sep = &quot;~~~~&quot;)), formula = formula, label.y = 450) +
   theme_bw()</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
 </div>
 <div id="inferencias-sobre-los-registros" class="section level1">
 <h1>Inferencias sobre los registros</h1>
@@ -571,6 +575,7 @@ ggplot(cor_data, aes(DNC, abun)) +
   geom_smooth(color = &quot;red&quot;, method = &quot;lm&quot;, formula = y ~ poly(x, 2, raw = TRUE), se = TRUE) +
   stat_regline_equation(aes(label = paste(after_stat(eq.label), sep = &quot;~~~~&quot;)), formula = y ~ poly(x, 2, raw = TRUE), label.y = 450) +
   theme_bw()</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
 </div>
 <div id="inferencias-sobre-la-geografía" class="section level1">
 <h1>Inferencias sobre la geografía</h1>
@@ -582,6 +587,7 @@ coefs &lt;- coef(ajuste)
 abund_raster &lt;- coefs[1] + coefs[2] * dnc_raster + coefs[3] * (dnc_raster^2)
 
 plot(abund_raster, main = &quot;Abundancia Predicha&quot;)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
 </div>
 <div id="sólo-abundancias" class="section level1">
 <h1>Sólo abundancias?</h1>
